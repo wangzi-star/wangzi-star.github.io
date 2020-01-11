@@ -44,7 +44,7 @@ enum class|struct $ENUM_NAME: $UNDERLY_TYPE;//(8)c++11
 
 # 5. 参考
 
-[Enumeration declaration](https://en.cppreference.com/w/cpp/language/enum)
+* <https://en.cppreference.com/w/cpp/language/enum>
 
 
 
