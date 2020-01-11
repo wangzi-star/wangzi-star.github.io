@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "my first github page blog!"
+title:  "第一次写gitub page blog!"
 date:   2020-01-11 22:53:54
 categories: 随笔
 tags: 随笔
-excerpt: 第一个github page blog，有点小激动
+excerpt: 第一次写github page blog，有点小激动
 mathjax: true
 author: superman
 ---
