@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "第一次在github pages上blog"
+title:  "第一次在github pages上写blog"
 date:   2020-01-11 22:53:54
 categories: 随笔
 tags: 随笔
