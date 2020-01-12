@@ -76,6 +76,7 @@ int main()
 ```
 
 1. vs2019
+
 ```c++
 // A::A
 00007FF7163D2770  mov         qword ptr [rsp+8],rcx  
@@ -133,6 +134,7 @@ int main()
 ```
 
 2. gcc4.8.5
+
 ```
 00000000004006ea <_ZN1AC1Ev>:
   4006ea:	55                   	push   %rbp
@@ -232,6 +234,37 @@ int main()
   4007ee:	66 90                	xchg   %ax,%ax
 ```
 
-# 4. 参考
+# 4. 多线程环境容易犯的错误
+
+```c++
+class A
+{
+public:
+    virtual ~A()
+    {
+        _timer.stop();  // 在B线程停止定时器，虽然能保证stop之后回调函数不再执行
+    }
+
+    void reg_timer()
+    {
+        // 注册定时器毁掉函数。 定时器回调在A线程执行
+        _timer.add(1000, [this] {
+            this->on_timer();
+        });
+    }
+
+    virtual void on_timer() {}
+private:
+    Timer _timer;
+};
+
+class B : public A
+{
+public:
+    void on_timer() override {}
+};
+```
+
+# 5. 参考
 
 * <https://en.cppreference.com/w/cpp/language/virtual>
