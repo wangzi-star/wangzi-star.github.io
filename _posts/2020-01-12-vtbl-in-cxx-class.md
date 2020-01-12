@@ -33,7 +33,7 @@ When a virtual function is called directly or indirectly from a constructor or f
 
 # 3. 编译器如何实现构造函数调用虚函数的行为
 
-我们反汇编一段c++代码来看编译器如何实现：
+我们反汇编一段c++代码来欣赏一下编译器如何实现：
 ```c++
 class A;
 
