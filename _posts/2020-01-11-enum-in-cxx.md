@@ -15,7 +15,7 @@ author: superman
 # 1. 无作用域枚举
 
 ```
-enum { A = 1, B = 2, ... }； // (1)匿名枚举
+enum { A = 1, B = 2, ... }; // (1)匿名枚举
 enum EnumA {  A = 1, B = 2, ... }; //(2) 具名枚举
 enum EnumA: int { A = 1, B = 2, ... }; //(3) c++11， 指定枚举底层类型
 
@@ -29,7 +29,7 @@ foo(A);
 
 ```
 enum class|struct EnumA { A = 1, B = 2, ... }; //(4)c++11，强类型枚举
-enum class|struct EnumA: uint8_t { A = 1, B = 2, ...};//(5)c++11，指定枚举底层类型的强类型枚举
+enum class|struct EnumA: uint8_t { A = 1, B = 2, ...}; //(5)c++11，指定枚举底层类型的强类型枚举
 
 // 使用枚举
 void foo(EnumA);
