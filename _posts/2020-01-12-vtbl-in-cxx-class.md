@@ -18,11 +18,11 @@ author: superman
 
 * 构造函数在执行完所有基类构造函数之后执行初始化列表之前植入当前类的虚表。析构函数执行用户代码之前植入当前类的虚表。
 
-* vs 通过命令行`/d1 reportAllClassLayout`或者`/d1 reportSingleClassLayout XX`查看所有类布局包括虚表所在，`gdb`使用命令`info vtbl var`查看类实例的虚表。
+* vs 通过命令行`/d1 reportAllClassLayout`或者`/d1 reportSingleClassLayout XX`查看类的内存布局包括虚表所在，`gdb`使用命令`info vtbl var`查看类实例的虚表信息。
 
 # 2. 不要在构造或析构函数中调用虚函数
 
-* 构造或析构函数中直接或间接调用虚函数，无多态行为发生，而调用当前类的最终覆盖函数。比如执行基类构造函数时，此时派生类不存在，当前无法调用派生类的虚函数。标准规定：
+* 构造或析构函数中直接或间接调用虚函数，无多态行为发生，而调用当前类的最终覆盖函数。比如执行基类构造函数时，此时派生类不存在，自然无法调用派生类的虚函数。标准规定：
 ```
 During construction and destruction
 When a virtual function is called directly or indirectly from a constructor or from a destructor (including during the construction or destruction of the class’s non-static data members, e.g. in a member initializer list), and the object to which the call applies is the object under construction or destruction, the function called is the final overrider in the constructor’s or destructor’s class and not one overriding it in a more-derived class. In other words, during construction or destruction, the more-derived classes do not exist.
@@ -33,7 +33,7 @@ When a virtual function is called directly or indirectly from a constructor or f
 
 # 3. 编译器如何实现构造函数调用虚函数的行为
 
-我们反汇编一段c++代码来欣赏一下编译器如何实现：
+我们通过反汇编来欣赏一下编译器如何实现：
 ```c++
 class A;
 
@@ -264,6 +264,8 @@ public:
     void on_timer() override {}
 };
 ```
+
+总之，基类执行构造或析构函数的同时调用任何子类的虚函数，都是未定义行为。
 
 # 5. 参考
 
