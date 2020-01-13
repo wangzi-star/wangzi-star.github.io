@@ -6,7 +6,7 @@ categories: 随笔
 tags: 随笔
 excerpt: 第一次在github pages写blog，有点小激动
 mathjax: true
-author: superman
+author: 旺仔
 ---
 
 * content
